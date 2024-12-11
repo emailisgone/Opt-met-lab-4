@@ -9,6 +9,7 @@ class SimplexSolver:
         self.A = A
         self.b = b
         self.table = self.createInitTable()
+        self.base = list(range(self.numVars, self.numVars + self.numConstr))
 
     def createInitTable(self):
         numSlack = self.numConstr
@@ -25,10 +26,7 @@ class SimplexSolver:
         return table
 
     def solve(self):
-        optimalVal = self.solveOptimal()
-        
-        self.solveMinimize(optimalVal)
-        
+        self.solveOptimal()
         return self.getSolv()
 
     def solveOptimal(self):
@@ -42,47 +40,19 @@ class SimplexSolver:
             
             pivotRow = self.getDepartVar(pivotCol)
             if pivotRow is None:
-                raise Exception("Problem is unbounded")
+                raise Exception("Pivot row error.")
+            
+            self.base[pivotRow] = pivotCol
             
             self.pivot(pivotRow, pivotCol)
             iter += 1
         
         if iter == maxIter:
-            raise Exception("Maximum iterations reached in phase 1")
+            raise Exception("[DEBUG] Maximum iterations reached.")
         
         return -self.table[-1, -1]
 
-    def solveMinimize(self, optimalVal):
-        origTable = self.table.copy()
-        
-        self.table[-1] = 0  
-        self.table[-1, 2] = 1 
-        
-        newRow = np.zeros(self.table.shape[1])
-        newRow[:self.numVars] = self.origC
-        newRow[-1] = optimalVal
-        self.table = np.vstack((self.table, newRow))
-        
-        maxIter = 1000
-        iter = 0
-        
-        while iter<maxIter:
-            pivotCol = self.getEnterVar()
-            if pivotCol is None:
-                break
-            
-            pivotRow = self.getDepartVar(pivotCol)
-            if pivotRow is None:
-                self.table = origTable
-                break
-            
-            self.pivot(pivotRow, pivotCol)
-            iter += 1
-        
-        if iter == maxIter:
-            self.table = origTable
-
-    def getEnterVar(self):              # Gauname mažiausį obj. f-jos indeksą, grąžiname stulpelio poziciją
+    def getEnterVar(self):              
         objectRow = self.table[-1, :-1]
         minVal = np.min(objectRow)
         
@@ -91,7 +61,7 @@ class SimplexSolver:
             
         return np.argmin(objectRow)   
 
-    def getDepartVar(self, pivotCol):               # Skaičiuojame santykius, grąžiname eilutės poziciją
+    def getDepartVar(self, pivotCol):               
         ratios = []
         rhsCol = self.table[:-1, -1]
         pivotColVal = self.table[:-1, pivotCol]
@@ -123,28 +93,13 @@ class SimplexSolver:
     def getSolv(self):
         solution = np.zeros(self.numVars)
         
-        for j in range(self.numVars):
-            col = self.table[:-1, j]
-            isBase = True
-            baseRow = -1
-            
-            for i in range(len(col)):
-                if abs(col[i]-1.0)<1e-6: 
-                    if baseRow == -1:
-                        baseRow = i
-                    else: 
-                        isBase = False
-                        break
-                elif abs(col[i])>1e-6: 
-                    isBase = False
-                    break
-            
-            if isBase and baseRow!=-1:
-                solution[j] = max(0, self.table[baseRow, -1]) 
+        for i, var in enumerate(self.base):
+            if var<self.numVars:  
+                solution[var] = max(0, self.table[i, -1])
         
         objVal = np.dot(self.origC, solution)
         
-        return{
+        return {
             'x': solution,
             'objective': objVal,  
             'table': self.table

@@ -28,6 +28,8 @@ b = np.array([8, 10, 3])
 print("(b = [8, 10, 3]):")
 solver = SimplexSolver(c, A, b)
 solution = solver.solve()
+print("Simplex Table:")
+print(solution['table'])
 print(f"Optimal solution x = {solution['x']}")                  # Bazė - x2 ir x4 ONLY
 print(f"Objective value = {solution['objective']}\n")
 
@@ -39,7 +41,9 @@ print("\n(b = [1, 5, 7]):")
 b = np.array([1, 5, 7])
 solver2 = SimplexSolver(c, A, b)
 solution2 = solver2.solve()
-print(f"Optimal solution x = {solution2['x']}")                 # Bazė - x2 ir x4 ONLY
+print("Simplex Table:")
+print(solution2['table'])
+print(f"Optimal solution x = {solution2['x']}")                 
 print(f"Objective value = {solution2['objective']}\n")
 
 actualAnswer2 = linprog(c, A_ub=A, b_ub=b, method='simplex')
