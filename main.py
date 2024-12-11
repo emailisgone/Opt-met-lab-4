@@ -23,14 +23,14 @@ A = np.array([
     [2, 4, 0, 0],
     [0, 0, 1, 1]
 ])
-b = np.array([8, 10, 3])  
+b = np.array([0, 0, 0])  
 
 print("(b = [8, 10, 3]):")
 solver = SimplexSolver(c, A, b)
 solution = solver.solve()
 print("Simplex Table:")
 print(solution['table'])
-print(f"Optimal solution x = {solution['x']}")                  # Bazė - x2 ir x4 ONLY
+print(f"Optimal solution x = {solution['x']}")                  
 print(f"Objective value = {solution['objective']}\n")
 
 actualAnswer = linprog(c, A_ub=A, b_ub=b, method='simplex')

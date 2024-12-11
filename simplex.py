@@ -4,7 +4,6 @@ class SimplexSolver:
     def __init__(self, c, A, b):
         self.numVars = len(c)
         self.numConstr = len(b)
-        self.origC = c.copy()
         self.c = c
         self.A = A
         self.b = b
@@ -38,9 +37,10 @@ class SimplexSolver:
             if pivotCol is None:
                 break
             
+            print(self.table)
             pivotRow = self.getDepartVar(pivotCol)
             if pivotRow is None:
-                raise Exception("Pivot row error.")
+                raise Exception("[DEBUG] Pivot row error.")
             
             self.base[pivotRow] = pivotCol
             
@@ -65,7 +65,7 @@ class SimplexSolver:
         ratios = []
         rhsCol = self.table[:-1, -1]
         pivotColVal = self.table[:-1, pivotCol]
-        
+
         for i in range(len(rhsCol)):
             if pivotColVal[i]<=1e-6:
                 ratios.append(float('inf'))
@@ -90,6 +90,8 @@ class SimplexSolver:
                 factor = self.table[i, pivotCol]
                 self.table[i] = self.table[i]-factor*self.table[pivotRow]
 
+        
+
     def getSolv(self):
         solution = np.zeros(self.numVars)
         
@@ -97,7 +99,7 @@ class SimplexSolver:
             if var<self.numVars:  
                 solution[var] = max(0, self.table[i, -1])
         
-        objVal = np.dot(self.origC, solution)
+        objVal = np.dot(self.c, solution)
         
         return {
             'x': solution,
