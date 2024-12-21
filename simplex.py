@@ -90,8 +90,6 @@ class SimplexSolver:
                 factor = self.table[i, pivotCol]
                 self.table[i] = self.table[i]-factor*self.table[pivotRow]
 
-        
-
     def getSolv(self):
         solution = np.zeros(self.numVars)
         

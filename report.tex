@@ -1,0 +1,194 @@
+\documentclass{article}
+\usepackage{tabularray}
+\usepackage[a4paper, total={6in, 8in}]{geometry}
+\usepackage[english, lithuanian]{babel}
+\usepackage{float}
+\usepackage{amsmath}
+\usepackage{subcaption}
+\usepackage{datetime}
+\usepackage{comment}
+\usepackage{caption}
+\usepackage{graphicx}
+\usepackage{amsfonts}
+\usepackage{listings}
+\usepackage{parskip}
+\usepackage{amssymb}
+\usepackage{derivative}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{url}
+\usepackage{color}
+\usepackage{rotating}
+\usepackage{adjustbox}
+\usepackage{xcolor}
+\usepackage{hyperref}
+\usepackage{pythonhighlight}
+
+\DeclareUnicodeCharacter{2212}{-}
+\selectlanguage{lithuanian}
+
+\begin{document}
+\newlength{\mywidth}
+\settowidth{\mywidth}{Darbo vadovas:}
+\begin{titlepage}
+    \vskip 20pt
+    \centerline{\bf \large VILNIAUS UNIVERSITETAS}
+    \bigskip
+    \centerline{\large \textbf{MATEMATIKOS IR INFORMATIKOS FAKULTETAS}}
+    \vskip 120pt
+    \centerline{\bf \Large \textbf{Laboratorinis darbas 4}}
+    \vskip 50pt
+    \begin{center}
+        {\bf \LARGE Tiesinis programavimas}
+    \end{center}
+    \bigskip
+    \bigskip
+    \centerline{\Large Nikita Gainulin}
+    \vskip 90pt
+    \vskip 200pt
+    \centerline{\large \textbf{VILNIUS 2024}}
+\end{titlepage}
+
+\tableofcontents
+\clearpage
+
+\section{Įvadas}
+Savo ankstesniame laboratoriniame darbe gilinausi į netiesinį programavimą. Kaip nustačiau ankstesniame laboratoriniame darbe, netiesinio optimizavimo metodų tikslas - optimizuoti uždavinį, kurio tikslo funkcija arba vienas iš apribojimų yra netiesinio tipo. Šiame laboratoriniame darbe gilinsiuosi į tiesinį optimizavimą, kur visos modelio funkcijos bus tiesinės.
+\section{Nagrinėjamas uždavinys}
+Šiame laboratoriniame darbe apskaičiuosime mažiausią tikslo funkcijos reikšmę, optimalų sprendinį ir bazę šioms dviem sistemoms:
+\begin{equation}\label{eq:1}
+    \begin{split}
+        \min 2x_{1}-3x_{2}-5x_{4} \\
+        -x_{1}+x_{2}-x_{3}-x_{4}\leq8\\
+        2x_{1}+4x_{2}\leq10\\
+        x_{3}+x_{4}\leq3\\
+        x_{i}\geq0
+    \end{split}
+\end{equation}
+
+\begin{equation}\label{eq:2}
+    \begin{split}
+        \min 2x_{1}-3x_{2}-5x_{4} \\
+        -x_{1}+x_{2}-x_{3}-x_{4}\leq1\\
+        2x_{1}+4x_{2}\leq5\\
+        x_{3}+x_{4}\leq7\\
+        x_{i}\geq0
+    \end{split}
+\end{equation}
+\section{Tiesinis optimizavimas ir uždavinio sprendimo algoritmas}
+\subsection{Tiesinis optimizavimas}
+Kaip jau buvo matyti iš pateikto uždavinio, tiesinio optimizavimo metodas puikiai tinka jam spręsti ir reikiamiems atsakymams pateikti. Visi apribojimai ir pati tikslo funkcija yra tiesiniai. Kalbant apie minėtą tiesinį optimizavimo metodą, šiame laboratoriniame darbe naudosiu \textbf{simplekso metodą}.
+\subsection{Simplekso metodas}
+Paprastai, išgirdę sąvoką „simplekso metodas“, galime pagalvoti apie mums jau pažįstamą Nelderio-Medo metodą, kuris veikia su mažų matmenų figūromis. Tačiau, kaip jau žinome, šis metodas netinka nei tiesiniams, nei netiesiniams optimizavimo uţdaviniams spręsti, nes jis neturi galimybės savarankiškai tvarkytis su apribojimais. Netiesiniam optimizavimui jis yra svarbi kito, baudų metodo, dalis. Tačiau tiesinio optimizavimo atveju simplekso metodas taikomas visiškai kitaip ir niekuo nepanašus į tradicinį Nelderio-Medo metodą.
+
+Simplekso metodą pademonstruosiu optimizuodamas 1-ąją sistemą (\ref{eq:1}). Pirmasis simplekso metodo žingsnis yra paversti mūsų sistemos apribojimus iš nelygybių į lygybes įvedant vadinamuosius laisvuosius kintamuosius. Tokių kintamųjų kiekį lemia tai, kiek nelygybių yra sistemoje (išskyrus teigiamų reikšmių apribojimą). Mūsų atveju jų yra 3, todėl įvedame šiuos laisvuosius kintamuosius: $s_1$, $s_2$ ir $s_3$. Kitas žingsnis - padauginti mūsų tikslo funkciją iš -1, nes pagal numatytuosius nustatymus simplekso lentelė dirba su maksimizavimu, todėl turime pakeisti indeksus, kad išlaikytume minimizavimą. Taigi, mūsų naujoji sistema su lygybėmis atrodo taip:
+\begin{equation}
+    \begin{split}
+        \max -2x_{1}+3x_{2}+5x_{4} \\
+        -x_{1}+x_{2}-x_{3}-x_{4}+s_1=8\\
+        2x_{1}+4x_{2}+s_2=10\\
+        x_{3}+x_{4}+s_3=3\\
+        x_{i}, s_{i}\geq0
+    \end{split}
+\end{equation}
+
+Po pirmiau minėtų transformacijų naująją sistemą reikia perrašyti į standartinę matricinę formą $AX=B$, kur $A$ - apribojimų indeksų matrica, $X$ - nežinomų ir laisvųjų kintamųjų matrica, $B$ - dešiniosios pusės reikšmių matrica. Štai kaip atrodo mūsų naujosios sistemos standartinė forma: 
+\begin{equation*}
+    \underbrace{
+    \begin{pmatrix}
+        x_1 & x_2 & x_3 & x_4 & s_1 & s_2 & s_3\\
+        -1 & 1 & -1 & -1 & 1 & 0 & 0\\
+        2 & 4 & 0 & 0 & 0 & 1 & 0\\
+        0 & 0 & 1 & 1 & 0 & 0 & 1
+    \end{pmatrix}
+    }_{\text{A}}
+    \underbrace{
+    \begin{pmatrix}
+        x_1\\
+        x_2\\
+        x_3\\
+        x_4\\
+        s_1\\
+        s_2\\
+        s_3
+    \end{pmatrix}
+    }_{\text{X}}
+    =
+    \underbrace{
+    \begin{pmatrix}
+        8\\
+        10\\
+        3
+    \end{pmatrix}
+    }_{\text{B}}
+\end{equation*}
+
+Dabar galime sukurti pradinę simplekso lentelę:
+\begin{table}[H]
+    \centering
+    \resizebox{\linewidth}{!}{%
+    \begin{tabular}{|c|c|c|c|c|c|c|c|c|c|} 
+    \hline
+    \multicolumn{2}{|c|}{} & $C_j$    & -2    & 3     & 0     & 5     & 0     & 0     & 0      \\ 
+    \hline
+    $C_b$ & $B$            & $X_b$    & $x_1$ & $x_2$ & $x_3$ & $x_4$ & $s_1$ & $s_2$ & $s_3$  \\ 
+    \hline
+    0     & $s_1$          & 8        & -1    & 1     & -1    & -1    & 1     & 0     & 0      \\ 
+    \hline
+    0     & $s_2$          & 10       & 2     & 4     & 0     & 0     & 0     & 1     & 0      \\ 
+    \hline
+    0     & $s_3$          & 13       & 0     & 0     & 1     & 1     & 0     & 0     & 1      \\ 
+    \hline
+    \multicolumn{3}{|c|}{$Z_j-C_j$}   & 2     & -3    & 0     & -5    & 0     & 0     & 0      \\
+    \hline
+    \end{tabular}
+    }
+    \caption{Pradinė simplekso lentelė, kur $C_j$ - maksimizavimo tikslo funkcijos indeksai, $B$ - bazinės reikšmės, $C_b$ - bazinių reikšmių indeksai maksimizavimo tikslo funkcijoje, $X_b$ - atitinka standartinės formos $B$ matricai}
+    \label{table:1}
+\end{table}
+
+Kaip pastebėjote, turime nepažįstamą eilutę $Z_j-C_j$. Šioje eilutėje nustatomas pagrindinis stulpelis ir ji bus naudinga vėliau, kai pradėsime skaičiuoti optimalią vertę. Kol kas pakanka atkreipti dėmesį į šią formulę, pagal kurią apskaičiuojama $Z_j-C_j$:
+\begin{equation}
+    Z_j-C_j\equiv C_bX_j-C_j
+\end{equation}
+Kadangi iš pradžių $C_b$ yra 0, visa apatinė $Z_j-C_j$ eilutė yra lygi $-C_j$. Toliau šioje eilutėje mums reikia rasti mažiausią neigiamą reikšmę, šiuo atveju -5. Tai yra pagrindinis stulpelis $x_4$. Dabar mums reikia pasirinkti pagrindinę eilutę. Tai atliekama visas $X_b$ reikšmes dalijant iš pagrindinės eilutės reikšmių atitinkamai. Gauname štai tokias reikšmes:
+\begin{equation*}
+    \begin{split}
+        \frac{8}{-1} = -8\\
+        \frac{10}{0} = \infty\\
+        \frac{13}{1} = 13
+    \end{split}
+\end{equation*}
+Iš apskaičiuotų santykinių dydžių turime pasirinkti tą, kuris duoda mažiausią teigiamą reikšmę, kuri mūsų atveju yra 13. Taigi, kai mes gavome pagrindinius stulpelį ir eilutę, galime pradėti konstruoti sekančią simplekso lentelę:
+\begin{table}[H]
+    \centering
+    \resizebox{\linewidth}{!}{%
+    \begin{tabular}{|c|c|c|c|c|c|c|c|c|c|} 
+    \hline
+    \multicolumn{2}{|c|}{} & $C_j$    & -2    & 3     & 0     & 5     & 0     & 0     & 0      \\ 
+    \hline
+    $C_b$ & $B$            & $X_b$    & $x_1$ & $x_2$ & $x_3$ & $x_4$ & $s_1$ & $s_2$ & $s_3$  \\ 
+    \hline
+    0     & $s_1$          &         &     &      &    &     &      &      &       \\ 
+    \hline
+    0     & $s_2$          &        &      &      &      &      &      &      &       \\ 
+    \hline
+    0     & $s_3$          &        &      &      &      &      &      &      &       \\ 
+    \hline
+    \multicolumn{3}{|c|}{$Z_j-C_j$}   &      &    &      &     &      &      &       \\
+    \hline
+    \end{tabular}
+    }
+\end{table}
+Tikslo funkcijos indeksai $C_j$ eilutėje nesikeis, todėl galime drąsiai juos perrašyti.
+
+
+\subsection{Algoritmo kodas}
+\section{Rezultatai ir jų analyzė}
+\subsection{Minimumo taškai}
+\subsection{Funkcijos reikšmės}
+\subsection{Greitis}
+\subsection{Efektyvumas}
+\section{Išvada}
+\section{Priedas}
+\end{document}
