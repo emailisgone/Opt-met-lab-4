@@ -33,11 +33,11 @@ class SimplexSolver:
         iter = 0
         
         while iter<maxIter:
+            print(self.table)
             pivotCol = self.getEnterVar()
             if pivotCol is None:
                 break
             
-            print(self.table)
             pivotRow = self.getDepartVar(pivotCol)
             if pivotRow is None:
                 raise Exception("[DEBUG] Pivot row error.")
@@ -99,7 +99,7 @@ class SimplexSolver:
         
         objVal = np.dot(self.c, solution)
         
-        return {
+        return{
             'x': solution,
             'objective': objVal,  
             'table': self.table
