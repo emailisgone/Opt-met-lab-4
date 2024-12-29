@@ -224,8 +224,8 @@ Po to indeksų stulpelį $C_b$ užpildome tikslo funkcijos $C_j$ indeksais. Kada
     \end{tblr}
     }
 \end{table}
-Toliau pažvelkime į pirmąją lentelę (\ref{table:1}), tiksliau - į raktinę reikšmę, esančią raktinės eilutės ir raktinio stulpelio sankirtoje. Mūsų atveju tai būtų 1. Paprastai, jei reikšmė būtų kokia nors kita, tuomet turėtume atlikti papildomus šios rakto eilutės reikšmių skaičiavimus, kad rakto reikšmė būtų 1, tačiau mums pasisekė, todėl jokių papildomų skaičiavimų atlikti nereikia. Svarbu pažymėti, kad skaičiavimai atliekami visai rakto eilutei, įskaitant $X_b$ reikšmes, o ne tik rakto reikšmei.
-Toliau visas kitas rakto stulpelio reikšmes, išskyrus rakto reikšmę, turime paversti 0, padaugindami rakto reikšmę (ir visą rakto eilutę) iš reikiamo skaičiaus ir pridėdami visą eilutę prie kitos. Pirmoje lentelėje (\ref{table:1}) vienintelė kita eilutė, kurią reikia pakoreguoti, yra pirmoji eilutė su $-1$ rakto stulpelyje. Vėlgi, kadangi ji yra $-1$, mums nereikia papildomai dauginti rakto eilutės iš nieko ir galime tiesiog pridėti ją prie tos pirmosios eilutės, kad rakto stulpelio reikšmė būtų 0. Štai kaip atrodo mūsų naujesnė simpleksinė lentelė:
+Toliau pažvelkime į pirmąją lentelę (\ref{table:1}), tiksliau - į pagrindinę reikšmę, esančią pagrindinės eilutės ir pagrindinio stulpelio sankirtoje. Mūsų atveju tai būtų 1. Paprastai, jei reikšmė būtų kokia nors kita, tuomet turėtume atlikti papildomus šios pagrindinės eilutės reikšmių skaičiavimus, kad pagrindinė reikšmė būtų 1, tačiau mums pasisekė, todėl jokių papildomų skaičiavimų atlikti nereikia. Svarbu pažymėti, kad skaičiavimai atliekami visai pagrindinei eilutei, įskaitant $X_b$ reikšmes, o ne tik pagrindinei reikšmei.
+Toliau visas kitas pagrindinio stulpelio reikšmes, išskyrus pagrindinę reikšmę, turime paversti 0, padaugindami pagrindinę reikšmę (ir visą pagrindinę eilutę) iš reikiamo skaičiaus ir pridėdami visą eilutę prie kitos. Pirmoje lentelėje (\ref{table:1}) vienintelė kita eilutė, kurią reikia pakoreguoti, yra pirmoji eilutė su $-1$ pagrindiniame stulpelyje. Vėlgi, kadangi ji yra $-1$, mums nereikia papildomai dauginti pagrindinės eilutės iš nieko ir galime tiesiog pridėti ją prie tos pirmosios eilutės, kad pagrindinio stulpelio reikšmė būtų 0. Štai kaip atrodo mūsų naujesnė simpleksinė lentelė:
 \begin{table}[H]
     \centering
     \resizebox{\linewidth}{!}{%
@@ -314,7 +314,7 @@ Tai žymi pirmosios iteracijos pabaigą ir antrosios pradžią. Vėlgi mažiausi
 \begin{equation*}
     \frac{3}{0}\not\in \mathbb{R}
 \end{equation*}
-Kaip matome, antroji, $s_2$ eilutė yra mūsų naujoji raktinė eilutė. Dabar, kai turime ir raktinę eilutę, ir raktinį stulpelį, pradėkime atnaujinti simplekso lentelę:
+Kaip matome, antroji, $s_2$ eilutė yra mūsų naujoji pagrindinė eilutė. Dabar, kai turime ir pagrindinę eilutę, ir pagrindinį stulpelį, pradėkime atnaujinti simplekso lentelę:
 \begin{table}[H]
     \centering
     \resizebox{\linewidth}{!}{%
@@ -336,7 +336,7 @@ Kaip matome, antroji, $s_2$ eilutė yra mūsų naujoji raktinė eilutė. Dabar, 
     \end{tblr}
     }
 \end{table}
-Kadangi $x_2$ tapo raktiniu stulpeliu, galime atnaujinti $B$ bazinių kintamųjų vektorių, kad į jį įtrauktume šį kintamąjį, raktinėje eilutėje pakeisdami $s_2$. Tuomet nauja tos eilutės  $C_b$ reikšmė bus 3. Dabar grįžkime į \hyperref[table:2]{simplekso lentelę antrosios iteracijos pradžioje}. Kaip matome, šį kartą rakto reikšmė yra 4, vadinasi, turime padauginti visą eilutę iš $\frac{1}{4}$, kad tolesniems skaičiavimams rakto reikšmė būtų lygi 1. Taigi naujoji rakto eilutė atrodo taip:
+Kadangi $x_2$ tapo pagrindiniu stulpeliu, galime atnaujinti $B$ bazinių kintamųjų vektorių, kad į jį įtrauktume šį kintamąjį, pagrindinėje eilutėje pakeisdami $s_2$. Tuomet nauja tos eilutės  $C_b$ reikšmė bus 3. Dabar grįžkime į \hyperref[table:2]{simplekso lentelę antrosios iteracijos pradžioje}. Kaip matome, šį kartą pagrindinė reikšmė yra 4, vadinasi, turime padauginti visą eilutę iš $\frac{1}{4}$, kad tolesniems skaičiavimams pagrindinė reikšmė būtų lygi 1. Taigi naujoji pagrindinė eilutė atrodo taip:
 \begin{table}[H]
     \centering
     \resizebox{\linewidth}{!}{%
@@ -364,7 +364,7 @@ Kadangi $x_2$ tapo raktiniu stulpeliu, galime atnaujinti $B$ bazinių kintamųj�
     \end{tblr}
     }
 \end{table}
-Trečioji, $x_4$ eilutė lieka nepakitusi, nes raktinio stulpelio reikšmė jau yra 0:
+Trečioji, $x_4$ eilutė lieka nepakitusi, nes pagrindinio stulpelio reikšmė jau yra 0:
 \begin{table}[H]
     \centering
     \resizebox{\linewidth}{!}{%
@@ -392,7 +392,7 @@ Trečioji, $x_4$ eilutė lieka nepakitusi, nes raktinio stulpelio reikšmė jau 
     \end{tblr}
     }
 \end{table}
-Kalbant apie pirmąją, $s_1$ eilutę, jos reikšmė \hyperref[table:2]{pradinėje antrosios iteracijos lentelėje} yra 1, todėl mums tereikia padauginti mūsų rakto eilutę iš $-1$ ir pridėti ją prie pirmosios eilutės. Gautos reikšmės yra tokios: 
+Kalbant apie pirmąją, $s_1$ eilutę, jos reikšmė \hyperref[table:2]{pradinėje antrosios iteracijos lentelėje} yra 1, todėl mums tereikia padauginti mūsų pagrindinę eilutę iš $-1$ ir pridėti ją prie pirmosios eilutės. Gautos reikšmės yra tokios: 
 \begin{table}[H]
     \centering
     \resizebox{\linewidth}{!}{%
@@ -468,6 +468,313 @@ Taigi, antros iteracijos pabaigoje gauname štai tokią simplekso lentelę:
 Trečiosios iteracijos pradžioje jau matome, kad $Z_j-C_j$ eilutėje nėra neigiamų reikšmių, vadinasi, jau radome optimalų sprendinį ir toliau tęsti nereikia. Atsakymus nesunkiai galime pateikti iš lentelės: bazinių kintamųjų vektorių $B$ sudaro šie kintamieji - [$s_1$, $x_2$, $x_4$]. Optimalų sprendinį galima rasti priderinus $X_b$ reikšmes prie bazinės matricos $B$ ir jos yra tokios: $x_1=0$, $x_2=2.5$, $x_3=0$, $x_4=3$. Taip pat galime apskaičiuoti minimalią tikslo funkcijos reikšmę pagal šią formulę:
 \begin{equation*}
     -(C_b\cdot X_b) = -(0\cdot8.5+3\cdot2.5+5\cdot3) = -22.5
+\end{equation*}
+Dabar tokiu pat būdu išspręskime antrąją sistemą (\ref{eq:2}). Vėl pradedame nuo minimizavimo pavertimo maksimizavimu, inicializuojame laisvuosius kintamuosius ir prilyginame nelygybes:
+\begin{equation*}
+    \begin{split}
+        \max -2x_{1}+3x_{2}+5x_{4} \\
+        -x_{1}+x_{2}-x_{3}-x_{4}+s_1=1\\
+        2x_{1}+4x_{2}+s_2=5\\
+        x_{3}+x_{4}+s_3=7\\
+        x_{i}, s_{i}\geq0
+    \end{split}
+\end{equation*}
+Toliau užpildome pirmosios iteracijos simplekso lentelę:
+\begin{table}[H]
+    \centering
+    \resizebox{\linewidth}{!}{%
+    \begin{tabular}{|c|c|c|c|c|c|c|c|c|c|} 
+    \hline
+    \multicolumn{2}{|c|}{} & $C_j$    & -2    & 3     & 0     & 5     & 0     & 0     & 0      \\ 
+    \hline
+    $C_b$ & $B$            & $X_b$    & $x_1$ & $x_2$ & $x_3$ & $x_4$ & $s_1$ & $s_2$ & $s_3$  \\ 
+    \hline
+    0     & $s_1$          & 1        & -1    & 1     & -1    & -1    & 1     & 0     & 0      \\ 
+    \hline
+    0     & $s_2$          & 5       & 2     & 4     & 0     & 0     & 0     & 1     & 0      \\ 
+    \hline
+    0     & $s_3$          & 7       & 0     & 0     & 1     & 1     & 0     & 0     & 1      \\ 
+    \hline
+    \multicolumn{3}{|c|}{$Z_j-C_j$}   & 2     & -3    & 0     & -5    & 0     & 0     & 0      \\
+    \hline
+    \end{tabular}
+    }
+\end{table}
+Vėlgi pagrindinis stulpelis yra $x_4$ su $-5$ eilutėje $Z_j-C_j$. Dabar apskaičiuokime santykius, kad galėtume pasirinkti pagrindinę eilutę:
+\begin{equation*}
+    \frac{1}{-1} = -1
+\end{equation*}
+\begin{equation*}
+    \frac{5}{0} \not\in \mathbb{R}
+\end{equation*}
+\begin{equation*}
+    \frac{7}{1} = 7
+\end{equation*}
+Kaip ir pirmojoje sistemoje, pirmosios iteracijos pagrindinė eilutė vėl bus trečioji eilutė. Tai taip pat reiškia, kad 1 bus mūsų pagrindinė reikšmė, todėl mums nereikės atlikti jokių papildomų skaičiavimų pagrindinei eilutei ir galėsime pradėti formuoti sekančią iteracijų lentelę:
+\begin{table}[H]
+    \centering
+    \resizebox{\linewidth}{!}{%
+    \begin{tblr}{
+      cells = {c},
+      row{5} = {fg=red},
+      cell{1}{1} = {c=2}{},
+      cell{6}{1} = {c=3}{},
+      hlines,
+      vlines,
+    }
+              &       & $C_j$ & -2    & 3     & 0     & 5     & 0     & 0     & 0     \\
+    $C_b$     & $B$   & $X_b$ & $x_1$ & $x_2$ & $x_3$ & $x_4$ & $s_1$ & $s_2$ & $s_3$ \\
+    0         & $s_1$ &       &       &       &       &       &       &       &       \\
+    0         & $s_2$ &       &       &       &       &       &       &       &       \\
+    5         & $x_4$ & 7     & 0     & 0     & 1     & 1     & 0     & 0     & 1     \\
+    $Z_j-C_j$ &       &       &       &       &       &       &       &       &       
+    \end{tblr}
+    }
+\end{table}
+Kadangi antrosios eilutės pagrindinio stulpelio reikšmė jau yra 0, jai taip pat nereikės atlikti jokių papildomų skaičiavimų:
+\begin{table}[H]
+    \centering
+    \resizebox{\linewidth}{!}{%
+    \begin{tblr}{
+      cells = {c},
+      cell{1}{1} = {c=2}{},
+      cell{4}{3} = {fg=red},
+      cell{4}{4} = {fg=red},
+      cell{4}{5} = {fg=red},
+      cell{4}{6} = {fg=red},
+      cell{4}{7} = {fg=red},
+      cell{4}{8} = {fg=red},
+      cell{4}{9} = {fg=red},
+      cell{4}{10} = {fg=red},
+      cell{6}{1} = {c=3}{},
+      hlines,
+      vlines,
+    }
+              &       & $C_j$ & -2    & 3     & 0     & 5     & 0     & 0     & 0     \\
+    $C_b$     & $B$   & $X_b$ & $x_1$ & $x_2$ & $x_3$ & $x_4$ & $s_1$ & $s_2$ & $s_3$ \\
+    0         & $s_1$ &       &       &       &       &       &       &       &       \\
+    0         & $s_2$ & 5     & 2     & 4     & 0     & 0     & 0     & 1     & 0     \\
+    5         & $x_4$ & 7     & 0     & 0     & 1     & 1     & 0     & 0     & 1     \\
+    $Z_j-C_j$ &       &       &       &       &       &       &       &       &       
+    \end{tblr}
+    }
+\end{table}
+Pirmosios eilutės pagrindinio stulpelio reikšmė yra $-1$, todėl mums tereikia pridėti trečiosios eilutės reikšmes prie pirmosios eilutės:
+\begin{table}[H]
+    \centering
+    \resizebox{\linewidth}{!}{%
+    \begin{tblr}{
+      cells = {c},
+      cell{1}{1} = {c=2}{},
+      cell{3}{3} = {fg=red},
+      cell{3}{4} = {fg=red},
+      cell{3}{5} = {fg=red},
+      cell{3}{6} = {fg=red},
+      cell{3}{7} = {fg=red},
+      cell{3}{8} = {fg=red},
+      cell{3}{9} = {fg=red},
+      cell{3}{10} = {fg=red},
+      cell{6}{1} = {c=3}{},
+      hlines,
+      vlines,
+    }
+              &       & $C_j$ & -2    & 3     & 0     & 5     & 0     & 0     & 0     \\
+    $C_b$     & $B$   & $X_b$ & $x_1$ & $x_2$ & $x_3$ & $x_4$ & $s_1$ & $s_2$ & $s_3$ \\
+    0         & $s_1$ & 8     & -1    & 1     & 0     & 0     & 1     & 0     & 1     \\
+    0         & $s_2$ & 5     & 2     & 4     & 0     & 0     & 0     & 1     & 0     \\
+    5         & $x_4$ & 7     & 0     & 0     & 1     & 1     & 0     & 0     & 1     \\
+    $Z_j-C_j$ &       &       &       &       &       &       &       &       &       
+    \end{tblr}
+    }
+\end{table}
+Dabar apskaičiuokime ir atnaujinkime $Z_j-C_j$ eilutės reikšmes:
+\begin{equation*}
+    Z_1-C_1=C_bX_1-C_1=0-(-2)=-(-2)=2
+\end{equation*}
+\begin{equation*}
+    Z_2-C_2=C_bX_2-C_2=0-3=-3
+\end{equation*}
+\begin{equation*}
+    Z_3-C_3=C_bX_3-C_3=5\cdot1-0=5-0=5
+\end{equation*}
+\begin{equation*}
+    Z_4-C_4=C_bX_4-C_4=5\cdot1-5=5-5=0
+\end{equation*}
+\begin{equation*}
+    Z_5-C_5=C_bX_5-C_5=0-0=0
+\end{equation*}
+\begin{equation*}
+    Z_6-C_6=C_bX_6-C_6=0-0=0
+\end{equation*}
+\begin{equation*}
+    Z_7-C_7=C_bX_7-C_7=5\cdot1-0=5
+\end{equation*}
+Štai kaip atrodo mūsų simplekso lentelė antrosios iteracijos pradžioje:
+\begin{table}[H]
+    \centering
+    \resizebox{\linewidth}{!}{%
+    \begin{tblr}{
+      cells = {c},
+      cell{1}{1} = {c=2}{},
+      cell{6}{1} = {c=3}{},
+      cell{6}{4} = {fg=red},
+      cell{6}{5} = {fg=red},
+      cell{6}{6} = {fg=red},
+      cell{6}{7} = {fg=red},
+      cell{6}{8} = {fg=red},
+      cell{6}{9} = {fg=red},
+      cell{6}{10} = {fg=red},
+      hlines,
+      vlines,
+    }
+              &       & $C_j$ & -2    & 3     & 0     & 5     & 0     & 0     & 0     \\
+    $C_b$     & $B$   & $X_b$ & $x_1$ & $x_2$ & $x_3$ & $x_4$ & $s_1$ & $s_2$ & $s_3$ \\
+    0         & $s_1$ & 8     & -1    & 1     & 0     & 0     & 1     & 0     & 1     \\
+    0         & $s_2$ & 5     & 2     & 4     & 0     & 0     & 0     & 1     & 0     \\
+    5         & $x_4$ & 7     & 0     & 0     & 1     & 1     & 0     & 0     & 1     \\
+    $Z_j-C_j$ &       &       & 2     & -3    & 5     & 0     & 0     & 0     & 5     
+    \end{tblr}
+    }
+\end{table}
+Vėlgi, dėl to, kad $-3$ yra mažiausia reikšmė, pagrindinis šios iteracijos stulpelis bus antrasis, $x_2$. Toliau apskaičiuokime santykius:
+\begin{equation*}
+    \frac{8}{1} = 8
+\end{equation*}
+\begin{equation*}
+    \frac{5}{4} = 1.25
+\end{equation*}
+\begin{equation*}
+    \frac{7}{0} \not\in \mathbb{R}
+\end{equation*}
+Antroji eilutė tampa pagrindine. Kadangi pagrindinė reikšmė yra 4, visą pagrindinę eilutę turėsime padauginti iš $\frac{1}{4}$. Štai atnaujinta lentelė:
+\begin{table}[H]
+    \centering
+    \resizebox{\linewidth}{!}{%
+    \begin{tblr}{
+      cells = {c},
+      row{4} = {fg=red},
+      cell{1}{1} = {c=2}{},
+      cell{6}{1} = {c=3}{},
+      hlines,
+      vlines,
+    }
+              &       & $C_j$ & -2    & 3     & 0     & 5     & 0     & 0     & 0     \\
+    $C_b$     & $B$   & $X_b$ & $x_1$ & $x_2$ & $x_3$ & $x_4$ & $s_1$ & $s_2$ & $s_3$ \\
+    0         & $s_1$ &       &       &       &       &       &       &       &       \\
+    3         & $x_2$ & 1.25  & 0.5   & 1     & 0     & 0     & 0     & 0.25  & 0     \\
+    5         & $x_4$ &       &       &       &       &       &       &       &       \\
+    $Z_j-C_j$ &       &       &       &       &       &       &       &       &       
+    \end{tblr}
+    }
+\end{table}
+Kadangi trečiosios eilutės pagrindinio stulpelio reikšmė jau yra 0, jokių papildomų skaičiavimų atlikti nereikia:
+\begin{table}[H]
+    \centering
+    \resizebox{\linewidth}{!}{%
+    \begin{tblr}{
+      cells = {c},
+      cell{1}{1} = {c=2}{},
+      cell{5}{3} = {fg=red},
+      cell{5}{4} = {fg=red},
+      cell{5}{5} = {fg=red},
+      cell{5}{6} = {fg=red},
+      cell{5}{7} = {fg=red},
+      cell{5}{8} = {fg=red},
+      cell{5}{9} = {fg=red},
+      cell{5}{10} = {fg=red},
+      cell{6}{1} = {c=3}{},
+      hlines,
+      vlines,
+    }
+              &       & $C_j$ & -2    & 3     & 0     & 5     & 0     & 0     & 0     \\
+    $C_b$     & $B$   & $X_b$ & $x_1$ & $x_2$ & $x_3$ & $x_4$ & $s_1$ & $s_2$ & $s_3$ \\
+    0         & $s_1$ &       &       &       &       &       &       &       &       \\
+    3         & $x_2$ & 1.25  & 0.5   & 1     & 0     & 0     & 0     & 0.25  & 0     \\
+    5         & $x_4$ & 7     & 0     & 0     & 1     & 1     & 0     & 0     & 1     \\
+    $Z_j-C_j$ &       &       &       &       &       &       &       &       &       
+    \end{tblr}
+    }
+\end{table}
+Pirmosios eilutės pagrindinio stulpelio reikšmė yra 1, todėl turėsime iš jos atimti pagrindinę eilutę:
+\begin{table}[H]
+    \centering
+    \resizebox{\linewidth}{!}{%
+    \begin{tblr}{
+      cells = {c},
+      cell{1}{1} = {c=2}{},
+      cell{3}{3} = {fg=red},
+      cell{3}{4} = {fg=red},
+      cell{3}{5} = {fg=red},
+      cell{3}{6} = {fg=red},
+      cell{3}{7} = {fg=red},
+      cell{3}{8} = {fg=red},
+      cell{3}{9} = {fg=red},
+      cell{3}{10} = {fg=red},
+      cell{6}{1} = {c=3}{},
+      hlines,
+      vlines,
+    }
+              &       & $C_j$ & -2    & 3     & 0     & 5     & 0     & 0     & 0     \\
+    $C_b$     & $B$   & $X_b$ & $x_1$ & $x_2$ & $x_3$ & $x_4$ & $s_1$ & $s_2$ & $s_3$ \\
+    0         & $s_1$ & 6.75  & -1.5  & 0     & 0     & 0     & 1     & -0.25 & 1     \\
+    3         & $x_2$ & 1.25  & 0.5   & 1     & 0     & 0     & 0     & 0.25  & 0     \\
+    5         & $x_4$ & 7     & 0     & 0     & 1     & 1     & 0     & 0     & 1     \\
+    $Z_j-C_j$ &       &       &       &       &       &       &       &       &       
+    \end{tblr}
+    }
+\end{table}
+Apskaičiuokime eilutę $Z_j-C_j$:
+\begin{equation*}
+    Z_1-C_1=C_bX_1-C_1=(3\cdot0.5)-(-2)=1.5+2=3.5
+\end{equation*}
+\begin{equation*}
+    Z_2-C_2=C_bX_2-C_2=(3\cdot1)-3=3-3=0
+\end{equation*}
+\begin{equation*}
+    Z_3-C_3=C_bX_3-C_3=(5\cdot1)-0=5-0=5
+\end{equation*}
+\begin{equation*}
+    Z_4-C_4=C_bX_4-C_4=(5\cdot1)-5=5-5=0
+\end{equation*}
+\begin{equation*}
+    Z_5-C_5=C_bX_5-C_5=0-0=0
+\end{equation*}
+\begin{equation*}
+    Z_6-C_6=C_bX_6-C_6=(3\cdot0.25)-0=0.75-0=0.75
+\end{equation*}
+\begin{equation*}
+    Z_7-C_7=C_bX_7-C_7=(5\cdot1)-0=5-0=5
+\end{equation*}
+Taip atrodo simplekso lentelė trečiosios iteracijos pradžioje:
+\begin{table}[H]
+    \centering
+    \resizebox{\linewidth}{!}{%
+    \begin{tblr}{
+      cells = {c},
+      cell{1}{1} = {c=2}{},
+      cell{6}{1} = {c=3}{},
+      cell{6}{4} = {fg=red},
+      cell{6}{5} = {fg=red},
+      cell{6}{6} = {fg=red},
+      cell{6}{7} = {fg=red},
+      cell{6}{8} = {fg=red},
+      cell{6}{9} = {fg=red},
+      cell{6}{10} = {fg=red},
+      hlines,
+      vlines,
+    }
+              &       & $C_j$ & -2    & 3     & 0     & 5     & 0     & 0     & 0     \\
+    $C_b$     & $B$   & $X_b$ & $x_1$ & $x_2$ & $x_3$ & $x_4$ & $s_1$ & $s_2$ & $s_3$ \\
+    0         & $s_1$ & 6.75  & -1.5  & 0     & 0     & 0     & 1     & -0.25 & 1     \\
+    3         & $x_2$ & 1.25  & 0.5   & 1     & 0     & 0     & 0     & 0.25  & 0     \\
+    5         & $x_4$ & 7     & 0     & 0     & 1     & 1     & 0     & 0     & 1     \\
+    $Z_j-C_j$ &       &       & 3.5   & 0     & 5     & 0     & 0     & 0.75  & 5     
+    \end{tblr}
+    }
+\end{table}
+Kadangi $Z_j-C_j$ eilutėje nėra neigiamų reikšmių, pasiekėme optimalų antrosios sistemos (\ref{eq:2}) sprendinį, kurio bazinių kintamųjų matrica $B$ - [$s_1$, $x_2$, $x_4$], o pats optimalus sprendinys yra $x_1 = 0$, $x_2 = 1,25$, $x_3 = 0$, $x_4 = 7$ ir tokia minimali tikslo funkcijos reikšmė:
+\begin{equation*}
+    -(C_b\cdot X_b) = -(0\cdot6.75+3\cdot1.25+5\cdot7) = -38.75
 \end{equation*}
 Taip galima panaudoti simplekso metodą tiesiniam optimizavimo uždaviniui spręsti rankiniu būdu, tačiau vienas iš šio laboratorinio darbo tikslų buvo išspręsti jį taikant kodinį šio metodo įgyvendinimą, todėl pasidalinsiu savo įgyvendinimu Python kalba.
 \subsection{Algoritmo kodas}
@@ -619,6 +926,7 @@ Kalbant apie antrąją sistemą (\ref{eq:2}), štai simpleksų lentelės kiekvie
     \caption{Antros sistemos (\ref{eq:2}) galutiniai rezultatai}
     \label{table:11}
 \end{table}
+Kaip matome, algoritmo pateikti atsakymai vėl sutampa su ranka rastais atsakymais.
 \begin{table}[H]
     \centering
     \resizebox{\linewidth}{!}{%
@@ -637,7 +945,6 @@ Kalbant apie antrąją sistemą (\ref{eq:2}), štai simpleksų lentelės kiekvie
 \end{table}
 \section{Išvada}
 Apibendrinant, pagrindiniai šio laboratorinio darbo tikslai:
-
 \begin{itemize}
     \item išnagrinėti ir paaiškinti vieną iš tiesinių optimizavimo uždavinių sprendimo metodų - simplekso metodą; 
     \item parašyti simplekso metodo įgyvendinimą Python kalba;
